@@ -11,6 +11,20 @@ if (Meteor.isClient) {
       return Notes.find({});
     }
   });
+
+  Template.body.events({
+    "submit .new-note": function (event) {
+      var text = event.target.text.value;
+      Notes.insert({
+        text: text,
+        creationDate: Date()
+      });
+      // clear the form
+      event.target.text.value = "";
+      // to avoid default submitting
+      return false;
+    }
+  });
 }
 
 if (Meteor.isServer) {
