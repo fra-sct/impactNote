@@ -3,12 +3,19 @@
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
-
-  {{> hello}}
+  <header>
+    <h1>ImpactNote</h1>
+  </header>
+  <main>
+    {{#each notes}}
+      {{> note}}
+    {{/each}}
+  </main>
+  <footer>
+    <p>A simple, small notetaking app written with Meteor.js</p>
+  </footer>
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+<template name="note">
+  <div>{{ text }}</div>
 </template>
