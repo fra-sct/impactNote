@@ -5,14 +5,11 @@
 <body>
   <header>
     <h1>ImpactNote</h1>
-    <form class="new-note">
-      <textarea name="text" placeholder="Insert your note here..."></textarea>
-      <button type="submit">Submit</button>
-    </form>
+    {{> note_create }}
   </header>
   <main>
     {{#each notes}}
-      {{> note}}
+      {{> note }}
     {{/each}}
   </main>
   <footer>
@@ -24,8 +21,13 @@
   <div>
     <button class="delete">Delete</button>
     <br/>
-    <pre>
-      {{ text }}
-    </pre>
+    <pre>{{ text }}</pre>
   </div>
+</template>
+
+<template name="note_create">
+  <form class="new-note">
+    <textarea name="text" placeholder="Insert your note here..."></textarea>
+    <button type="submit">Submit</button>
+  </form>
 </template>

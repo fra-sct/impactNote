@@ -12,7 +12,7 @@ if (Meteor.isClient) {
     }
   });
 
-  Template.body.events({
+  Template.note_create.events({
     "submit .new-note": function (event) {
       var text = event.target.text.value;
       Notes.insert({
