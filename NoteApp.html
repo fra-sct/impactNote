@@ -4,34 +4,24 @@
 </head>
 
 <body>
+</body>
+
+<template name="Home">
   <header>
+    {{> Navbar }}
     <h1>ImpactNote</h1>
-    {{> note_create }}
   </header>
   <main>
-    {{#each notes}}
-      {{> note }}
-    {{/each}}
+    {{> note_create }}
   </main>
   <footer>
     <p>A simple, small notetaking app written with Meteor.js</p>
   </footer>
-</body>
-
-<template name="note">
-  <div>
-    <button class="delete"><i class="fa fa-trash"></i>
-</button>
-    <strong>{{title}}</strong>
-    <br/>
-    <pre>{{ text }}</pre>
-  </div>
 </template>
 
-<template name="note_create">
-  <form class="new-note">
-    <input type="text" name="title" placeholder="Title of the note"/><br/>
-    <textarea name="text" placeholder="Insert your note here..."></textarea>
-    <button type="submit">Submit</button>
-  </form>
+<template name="Navbar">
+  <div>
+    <a href="/">Home</a> |
+    <a href="/notes">Show notes</a>
+  </div>
 </template>
