@@ -13,7 +13,12 @@ Router.route('/notes', function () {
 
 // Routes '/note/:id' to the show_note page
 //TODO: return a 404 error if cannot find the note
-Router.route('/note/:id', function () {
-  var note = Notes.findOne({ _id: this.params.id });
-  this.render('note_show', { data: note });
+Router.route('/note/:_id', function () {
+  var note = Notes.findOne({
+    _id: this.params._id
+  });
+  if(!note)
+    this.render('error_404');
+  else
+    this.render('note_show', { data: note });
 });
