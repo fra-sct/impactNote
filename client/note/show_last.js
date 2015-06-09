@@ -9,6 +9,11 @@ Template.note_show_last.helpers({
         sort: {creationDate: -1},
         limit: 10,
       }).map( function (item) {
+        // title may be absent... no, title should not be
+        // absent, it's just me who keeps on using an old
+        // scheme where title was not present
+        // TODO: meteor reset and remove
+        //     'title' in item
         var title =
           'title' in item && item.title.length > 0
           ? item.title

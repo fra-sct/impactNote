@@ -5,26 +5,3 @@
 
 <body>
 </body>
-
-<template name="Home">
-  <header>
-    {{> Navbar }}
-    <h1>ImpactNote</h1>
-  </header>
-  <main>
-    {{> note_create }}
-    <div>
-      {{> note_show_last }}
-    </div>
-  </main>
-  <footer>
-    <p>A simple, small notetaking app written with Meteor.js</p>
-  </footer>
-</template>
-
-<template name="Navbar">
-  <div>
-    <a href="/">Home</a> |
-    <a href="/notes">Show notes</a>
-  </div>
-</template>
