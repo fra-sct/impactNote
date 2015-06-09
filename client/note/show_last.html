@@ -1,0 +1,11 @@
+<template name="note_show_last">
+  {{#each notes}}
+    {{> note_show_compact_last }}
+  {{/each}}
+</template>
+
+<template name="note_show_compact_last">
+  <div>
+    <strong>{{ title }}</strong>
+  </div>
+</template>
