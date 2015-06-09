@@ -18,7 +18,10 @@ Template.note_show_last.helpers({
           'title' in item && item.title.length > 0
           ? item.title
           : item.text.slice(0, 50);
-        return { 'title': title };
+        return {
+          '_id': item._id,
+          'title': title
+          };
       });
   }
 });
