@@ -1,5 +1,6 @@
 <head>
   <title>NoteApp</title>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -19,7 +20,8 @@
 
 <template name="note">
   <div>
-    <button class="delete">Delete</button>
+    <button class="delete"><i class="fa fa-trash"></i>
+</button>
     <strong>{{title}}</strong>
     <br/>
     <pre>{{ text }}</pre>
