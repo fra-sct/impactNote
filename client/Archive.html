@@ -1,3 +1,9 @@
+<template name="Archive">
+  {{#each notes}}
+    {{> note_show_compact }}
+  {{/each}}
+</template>
+
 <template name="note_show_compact">
   <div>
     <button class="delete"><i class="fa fa-trash"></i>
