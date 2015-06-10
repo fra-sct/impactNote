@@ -14,7 +14,7 @@ Meteor.methods({
     Notes.insert({
       title: title,
       text: text,
-      createdAt: Date(),
+      createdAt: moment(),
       owner: [currentUserId],
       public: isPublic
     });
