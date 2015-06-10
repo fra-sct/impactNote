@@ -1,3 +1,17 @@
+Template.note_create.events({
+  "submit .new-note": function (event) {
+    var title = event.target.title.value;
+    var text = event.target.text.value;
+    // note creation/insertion in the db
+    Meteor.call('createNote', title, text, true);
+    // clear the form
+    event.target.title.value = "";
+    event.target.text.value = "";
+    // to avoid default submitting
+    return false;
+  }
+});
+
 Template.note_show_last.helpers({
   notes: function () {
     return Notes.find({}, {
