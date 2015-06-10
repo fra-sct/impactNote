@@ -2,11 +2,19 @@ Template.note_create.events({
   "submit .new-note": function (event) {
     var title = event.target.title.value;
     var text = event.target.text.value;
+    var isPublic = event.target.public.value;
     // note creation/insertion in the db
-    Meteor.call('createNote', title, text, true);
+    Meteor.call('createNote', title, text, isPublic, function (error, result) {
+      if (error) {
+        console.log(error.reason);
+      } else {
+        Router.go('note.show', { _id: result });
+      }
+    });
     // clear the form
     event.target.title.value = "";
     event.target.text.value = "";
+    event.target.public.value = true;
     // to avoid default submitting
     return false;
   }

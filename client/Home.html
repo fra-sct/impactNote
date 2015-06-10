@@ -10,7 +10,9 @@
 <template name="note_create">
   <form class="new-note">
     <input type="text" name="title" placeholder="Title of the note"/><br/>
-    <textarea name="text" placeholder="Insert your note here..."></textarea>
+    <textarea name="text" placeholder="Insert your note here..."></textarea><br/>
+    <label for="public">Public:</label>
+    <input type="checkbox" name="public" checked><br/>
     <button type="submit">Submit</button>
   </form>
 </template>
