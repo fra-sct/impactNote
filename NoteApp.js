@@ -1,18 +1,18 @@
 // NoteApp.js
 Notes = new Mongo.Collection("notes");
 
+// Routing follows
 // Routes '/' to the Home/create note page
 Router.route('/', function () {
   this.render('Home');
 });
 
-// All the notes in one page
+// An archive of the last public notes
 Router.route('/notes', function () {
   this.render('note_show_all');
 });
 
-// Routes '/note/:id' to the show_note page
-//TODO: return a 404 error if cannot find the note
+// View one note
 Router.route('/note/:_id', function () {
   var note = Notes.findOne({
     _id: this.params._id

@@ -5,6 +5,7 @@ Template.note_show_all.helpers({
     // TODO: when adding users, filter to show only own
     //  notes, or public notes
     return Notes.find({
+        public: true
       }, {
         sort: {creationDate: -1},
       });

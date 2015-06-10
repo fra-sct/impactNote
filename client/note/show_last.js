@@ -14,13 +14,15 @@ Template.note_show_last.helpers({
         // scheme where title was not present
         // TODO: meteor reset and remove
         //     'title' in item
+        var date = moment(item.creationDate).fromNow();
         var title =
           'title' in item && item.title.length > 0
           ? item.title
           : item.text.slice(0, 50);
         return {
           '_id': item._id,
-          'title': title
+          'title': title,
+          'date': date
           };
       });
   }
