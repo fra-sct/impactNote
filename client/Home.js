@@ -23,9 +23,7 @@ Template.note_create.events({
 
 Template.note_show_last.helpers({
   notes: function () {
-    return Notes.find({
-        public: true
-      }, {
+    return Notes.find({}, {
         sort: {createdAt: -1},
         limit: 10,
       }).map( function (item) {
