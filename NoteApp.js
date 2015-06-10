@@ -8,8 +8,8 @@ Router.route('/', function () {
 });
 
 // An archive of the last public notes
-Router.route('/notes', function () {
-  this.render('note_show_all');
+Router.route('/archive', function () {
+  this.render('Archive');
 });
 
 // View one note
