@@ -20,6 +20,7 @@ Router.route('/archive', function () {
 
 // View one note
 Router.route('/note/:_id', function () {
+  this.layout("Layout");
   var note = Notes.findOne({
     _id: this.params._id
   });

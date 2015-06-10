@@ -22,6 +22,7 @@ Meteor.methods({
       title: title,
       text: text,
       createdAt: moment(),
+      modifiedAt: moment(),
       owner: [currentUserId],
       public: isPublic
     });
@@ -38,7 +39,11 @@ Meteor.methods({
       owner: { $in: [currentUserId] }
     });
     return true;
-  }
+  },
+  'updateNote': function (id, title, text) {
+    var currentUserId = Meteor.userId();
+    // insert code here
+  },
 });
 
 Meteor.startup(function () {
