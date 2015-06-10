@@ -1,6 +1,11 @@
 Meteor.publish('notesList', function () {
   var currentUserId = this.userId;
-  return Notes.find();
+  return Notes.find({
+    $or: [
+      { "public": true },
+      { "owner": { $in: [null, currentUserId] } }
+    ]
+  });
 });
 
 Meteor.methods({
@@ -10,7 +15,7 @@ Meteor.methods({
       title: title,
       text: text,
       createdAt: Date(),
-      owner: currentUserId,
+      owner: [currentUserId],
       public: isPublic
     });
   },
