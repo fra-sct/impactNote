@@ -1,0 +1,47 @@
+TODO - ImpactNote
+=================
+Yes. Ideas. I don't lack those.
+
+* [x] Refactor the app to put the js/html in different files, in different folders.
+  * At the very least put the client and server code in the client and server folders and commit this to git.
+  * Make a different file for each view.
+    * Note_create/home
+	* Note_view_all
+	* Note_view
+	* Note_edit
+* [x] Use Iron:Router to build a multi-page app
+* [ ] Create a set of views
+  * [x] An home/create note page
+    * [ ] Check for validation on the create note form. As in, a note may have a title but must have some text.
+  * [ ] An about page (static)
+  * [ ] An user page - shows username, profile text (markdown formatted, as always) and public notes.
+    * [ ] A dashboard page - from where the user can update their own profile text.
+	* [ ] A my notes page - from where the user can manage their notes.
+	* [ ] A my preferites page - from where the user can manage (remove, view) their starred notes.
+  * [ ] A show all notes page - it should show only the title of the note (or the first ~50 characters of the text), who created it and its creation date
+    * This page (like every other page that shows a set of notes) will show all the notes that satisfy the following set of conditions:
+	  * The note has been made public by the owner.
+	  * The note is owned by the current user.
+  * [x] A show note page - it will show neatly the title of the note and the text of the note itself, rendered with markdown.
+    * The show note page is a route by id of the note itself. Problem is, do I want to use the ID used by Mongo and show it to the whole world?
+	  * Remember that it's simply to learn Meteor. Don't start going down the rabbit hole of premature optimization.
+    * [ ] With maybe a button/link/another view/whatever to show the raw contents of the note.
+	* [ ] Export to PDF functionality, anyone?
+	* [ ] If the note is owned by the current user, then show the Edit/Delete/(Make public/private) buttons.
+	* [ ] If the note is not owned by the current user, then show the Star button.
+* What is a note?
+  * [x] A note may have a title.
+  * [x] A note must have some text.
+  * [x] A note has a creation_date.
+  * [ ] A note has an owner.
+  * [ ] A note has a modification_date.
+  * [ ] A note may have multiple, unique tags.
+  * [ ] A note may have a set of versions of itself.
+    * As a note is simply a json object with the title, text, creation_date, modification_date, tags field the version may just be represented as a delta of the new object and the old object, tagged with a creation date.
+	* If the version system is implemented, I might just forego the modification_date *inside* the note and just pull the creation_date field of the last version (if there are no versions obviously the modification_date == creation_date).
+* Maybe (for the future) each note might have more than one owner? We would need a way for people to ask for/offer to own a note so that more than one person can edit each note.
+  * Might slow down the note viewing. As in, now I need to check if the user_id is in a set, and not simply check for equality.
+    * I doubt it will be a problem with this app, tho.
+  * Might create problems if two people edit the note at the same time.
+    * Maybe add a tag (being edited) and disallow editing until the user is finished?
+	  * But I need to remove the tag if the user has not made any modifications to the note in a long time - i.e. is just locking the note for whatever reason. So I can kick them.

@@ -1,5 +1,8 @@
 Meteor.publish('notesList', function () {
   var currentUserId = this.userId;
+  // An user (logged-in or not) can see only their own notes (anon if not
+  // logged in) or any public notes.
+  // This means that the public property is meaningles in anon notes.
   return Notes.find({
     $or: [
       { "public": true },
@@ -11,6 +14,8 @@ Meteor.publish('notesList', function () {
 Meteor.methods({
   'createNote': function (title, text, isPublic) {
     var currentUserId = Meteor.userId();
+    // I'm generating the note id by myself to be able of returning
+    // it to the caller for redirection
     var noteId = new Mongo.Collection.ObjectID()._str;
     Notes.insert({
       _id: noteId,

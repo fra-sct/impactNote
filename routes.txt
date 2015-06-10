@@ -1,0 +1,31 @@
+ImpactNote - Routes
+===================
+
+/
+	Home page *and* create note with the last ~10 notes shown in an aside.
+/notes
+/notes/<page>
+	Paginates through the visible notes, in inverse chronological order.
+/note/<id>
+	Shows the note <id>
+	(editing is handled on the same page through Meteor)
+/me
+	Shows the current user profile, with their last notes and starred notes.
+	(editing of the profile is handled on the same page using Meteor)
+/user/<id>
+	Shows the profile of the user <id>, with their last notes and starred notes.
+
+For both /me and /user/<id> the following routes will be implemented.
+
+/notes
+/notes/<page>
+	As per the main level route, this shows the paginated notes of the user.
+	
+Schema of note = {
+	'title': String,
+	'text': String,
+	'createdAt': Date,
+	'modifiedAt': Date,
+	'owner': UserId,
+	'public': Bool
+}
