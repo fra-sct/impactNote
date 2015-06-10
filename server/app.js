@@ -19,6 +19,9 @@ Meteor.methods({
       public: isPublic
     });
   },
+  'deleteNote': function (id) {
+    //insert code here
+  }
 });
 
 Meteor.startup(function () {

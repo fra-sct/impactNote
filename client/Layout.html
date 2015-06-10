@@ -1,0 +1,20 @@
+<template name="Layout">
+  <header>
+    {{> Navbar }}
+    {{> yield "Header" }}
+  </header>
+  <main>
+    {{> yield }}
+  </main>
+  <footer>
+    {{> yield "Footer" }}
+  </footer>
+</template>
+
+<template name="DefaultHeader">
+  <h1>Impact Note</h1>
+</template>
+
+<template name="DefaultFooter">
+  <p>A simple notes app written with Meteor.js</p>
+</template>

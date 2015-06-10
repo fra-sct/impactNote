@@ -1,17 +1,10 @@
 <template name="Home">
-  <header>
-    {{> Navbar }}
-    <h1>ImpactNote</h1>
-  </header>
-  <main>
-    {{> note_create }}
-    <div>
-      {{> note_show_last }}
-    </div>
-  </main>
-  <footer>
-    <p>A simple, small notetaking app written with Meteor.js</p>
-  </footer>
+  {{> note_create }}
+  <div>
+    {{> note_show_last }}
+  </div>
+  {{> contentFor region="Header" template="DefaultHeader"}}
+  {{> contentFor region="Footer" template="DefaultFooter"}}
 </template>
 
 <template name="note_create">

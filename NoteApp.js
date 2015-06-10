@@ -4,11 +4,13 @@ Notes = new Mongo.Collection("notes");
 // Routing follows
 // Routes '/' to the Home/create note page
 Router.route('/', function () {
+  this.layout("Layout");
   this.render('Home');
 });
 
 // An archive of the last public notes
 Router.route('/archive', function () {
+  this.layout("Layout");
   this.render('Archive');
 });
 

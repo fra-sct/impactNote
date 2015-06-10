@@ -1,7 +1,18 @@
 <template name="Archive">
+  <table>
+    <tr>
+      <th>Note</th>
+      <th>Created</th>
+    </tr>
   {{#each notes}}
-    {{> note_show_compact }}
+    <tr>
+      <td><a href="/note/{{ _id }}">{{ title }}</a></td>
+      <td>{{ createdAt }}</td>
+    </tr>
   {{/each}}
+  </table>
+  {{> contentFor region="Header" template="DefaultHeader"}}
+  {{> contentFor region="Footer" template="DefaultFooter"}}
 </template>
 
 <template name="note_show_compact">
