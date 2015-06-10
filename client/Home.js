@@ -2,12 +2,13 @@ Template.note_create.events({
   "submit .new-note": function (event) {
     var title = event.target.title.value;
     var text = event.target.text.value;
-    var isPublic = event.target.public.value;
+    var isPublic = event.target.public.checked;
     // note creation/insertion in the db
     Meteor.call('createNote', title, text, isPublic, function (error, result) {
       if (error) {
         console.log(error.reason);
       } else {
+        // if there are no errors, then redirect to the note
         Router.go('note.show', { _id: result });
       }
     });
@@ -22,7 +23,9 @@ Template.note_create.events({
 
 Template.note_show_last.helpers({
   notes: function () {
-    return Notes.find({}, {
+    return Notes.find({
+        public: true
+      }, {
         sort: {createdAt: -1},
         limit: 10,
       }).map( function (item) {
