@@ -25,7 +25,7 @@ Meteor.methods({
   'deleteNote': function (id) {
     var currentUserId = Meteor.userId();
     // an anonymous (not logged-in) user can only create notes
-    if (!user)
+    if (!currentUserId)
       return false;
     // delete the note - but only if the current user is an owner
     Notes.remove({
