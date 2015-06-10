@@ -27,7 +27,7 @@ Router.route('/note/:_id', function () {
   if(!note)
     this.render('error_404');
   else
-    this.render('note_show', { data: note });
+    this.render('Note', { data: note });
 }, {
   name: 'note.show'
 });

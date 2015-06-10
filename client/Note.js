@@ -1,4 +1,4 @@
-Template.note_show.events({
+Template.Note.events({
   "click .delete": function () {
     // TODO: ask for confirmation on note removal
     Meteor.call('deleteNote', this._id, function (error, result) {
@@ -9,5 +9,9 @@ Template.note_show.events({
           Router.go('home');
       }
     });
+  },
+  "click .edit": function () {
+    // TODO: code goes here
+    console.log("Button edit pressed")
   }
 });
