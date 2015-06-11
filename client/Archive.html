@@ -17,7 +17,7 @@
         {{#each notes}}
           <tr>
             <td><a href="/note/{{ _id }}">{{ title }}</a></td>
-            <td>{{ createdAt }}</td>
+            <td>{{ dateFormat createdAt }}</td>
           </tr>
         {{/each}}
         </tbody>

@@ -3,6 +3,9 @@ Template.Archive.helpers({
     return Notes.find({}, {
         sort: {createdAt: -1},
       });
+  },
+  dateFormat: function(date) {
+    return moment(date).format();
   }
 });
 

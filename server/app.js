@@ -17,12 +17,13 @@ Meteor.methods({
     // I'm generating the note id by myself to be able of returning
     // it to the caller for redirection
     var noteId = new Mongo.Collection.ObjectID()._str;
+    var now = moment().format();
     Notes.insert({
       _id: noteId,
       title: title,
       text: text,
-      createdAt: moment(),
-      modifiedAt: moment(),
+      createdAt: now,
+      modifiedAt: now,
       owner: [currentUserId],
       public: isPublic
     });
