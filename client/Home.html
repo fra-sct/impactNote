@@ -1,7 +1,11 @@
 <template name="Home">
-  {{> note_create }}
-  <div>
-    {{> note_show_last }}
+  <div class="row">
+    <div class="col-sm-8">
+    {{> note_create }}
+    </div>
+    <div class="col-sm-4">
+      {{> note_show_last }}
+    </div>
   </div>
   {{> contentFor region="Header" template="DefaultHeader"}}
   {{> contentFor region="Footer" template="DefaultFooter"}}
