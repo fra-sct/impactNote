@@ -1,7 +1,11 @@
 <template name="Note">
   <div class="row">
     <div class="col-sm-9">
-      {{#markdown}}{{ text }}{{/markdown}}
+      {{#if editing}}
+        {{>note_edit}}
+      {{else}}
+        {{#markdown}}{{ text }}{{/markdown}}
+      {{/if}}
     </div>
     <div class="col-sm-3">
       <div class="panel panel-default">
@@ -18,4 +22,20 @@
     </div>
   </div>
   {{> contentFor region="Footer" template="DefaultFooter"}}
+</template>
+
+<template name="note_edit">
+  <form class="edit-note" role="form">
+    <div class="form-group">
+      <input class="form-control" type="text" name="title" placeholder="Title of the note" value="{{ title }}">
+    </div>
+    <div class="form-group">
+      <textarea class="form-control" name="text" placeholder="Insert your note here..." rows="10">{{ text }}</textarea>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" name="public" {{is_public}}>Public</label>
+    </div>
+    <button class="cancel">Cancel</button>
+    <button type="submit">Save</button>
+  </form>
 </template>

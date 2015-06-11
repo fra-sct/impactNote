@@ -15,6 +15,19 @@ Template.Note.events({
     });
   },
   "click .edit": function () {
-    console.log("Button edit pressed")
+    Session.set("editing", this._id);
+    console.log("Button edit pressed xoxo");
   }
 });
+
+Template.Note.helpers({
+  "editing": function () {
+    return Session.get("editing") == this._id;
+  }
+})
+
+Template.note_edit.helpers({
+  "is_public": function () {
+    return this.public ? "checked" : "";
+  }
+})
