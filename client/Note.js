@@ -15,7 +15,6 @@ Template.Note.events({
     });
   },
   "click .edit": function () {
-    // TODO: code goes here
     console.log("Button edit pressed")
   }
 });

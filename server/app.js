@@ -6,7 +6,7 @@ Meteor.publish('notesList', function () {
   return Notes.find({
     $or: [
       { "public": true },
-      { "owner": { $in: [null, currentUserId] } }
+      { "user": { $in: [null, currentUserId] } }
     ]
   });
 });
@@ -24,7 +24,7 @@ Meteor.methods({
       text: text,
       createdAt: now,
       modifiedAt: now,
-      owner: [currentUserId],
+      user: currentUserId,
       public: isPublic
     });
     return noteId;
@@ -37,13 +37,28 @@ Meteor.methods({
     // delete the note - but only if the current user is an owner
     Notes.remove({
       _id: id,
-      owner: { $in: [currentUserId] }
+      user: { $in: [currentUserId] }
     });
     return true;
   },
   'updateNote': function (id, title, text) {
     var currentUserId = Meteor.userId();
-    // insert code here
+    var now = moment().format();
+    // an anonymous user cannot edit anything
+    if (!currentUserId)
+      return false;
+    // updates the note
+    Notes.update({
+      _id: id,
+      user: { $in: [currentUserId] }
+    }, {
+      $set : {
+        title: title,
+        text: text,
+        modifiedAt: now
+      }
+    })
+    return true;
   },
 });
 
