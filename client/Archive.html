@@ -1,17 +1,29 @@
 <template name="Archive">
-  <h2>Archive</h2>
-  <table>
-    <tr>
-      <th>Note</th>
-      <th>Created</th>
-    </tr>
-  {{#each notes}}
-    <tr>
-      <td><a href="/note/{{ _id }}">{{ title }}</a></td>
-      <td>{{ createdAt }}</td>
-    </tr>
-  {{/each}}
-  </table>
+  <div class="row">
+    <div class="col-12-sm">
+      <h2>Archive</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12-sm">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Note</th>
+            <th>Created</th>
+          </tr>
+        </thead>
+        <tbody>
+        {{#each notes}}
+          <tr>
+            <td><a href="/note/{{ _id }}">{{ title }}</a></td>
+            <td>{{ createdAt }}</td>
+          </tr>
+        {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
   {{> contentFor region="Footer" template="DefaultFooter"}}
 </template>
 
