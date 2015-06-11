@@ -5,8 +5,12 @@ Template.Note.events({
       if (error) {
         console.log(error.reason);
       } else {
-        if (result)
+        if (result) {
           Router.go('home');
+        } else {
+          // TODO: return better feedback to the user
+          console.log("Couldn't delete the note.");
+        }
       }
     });
   },
