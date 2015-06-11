@@ -13,13 +13,18 @@
           <h3 class="panel-title">{{ title }}</h3>
         </div>
         <div class="panel-body">
-          Created by {{user}} on {{createdAt}}<br/>
-          Modified on {{modifiedAt}}<br/>
+          Created by {{ user }} on {{ createdAt }}<br/>
+          Modified on {{ modifiedAt }}<br/>
         </div>
         <ul class="list-group">
+        {{#if editing}}
+          <a href="#" class="list-group-item save"><i class="fa fa-save"></i> Save</a>
+          <a href="#" class="list-group-item cancel"><i class="fa fa-times"></i> Cancel</a>
+        {{else}}
           <a href="#" class="list-group-item show_raw"><i class="fa fa-file-o delete"></i> View raw</a>
-          <a href="#" class="list-group-item"><i class="fa fa-trash delete"></i> Delete</a>
           <a href="#" class="list-group-item edit"><i class="fa fa-edit"></i> Edit</a>
+        {{/if}}
+          <a href="#" class="list-group-item"><i class="fa fa-trash delete"></i> Delete</a>
         </ul>
       </div>
     </div>

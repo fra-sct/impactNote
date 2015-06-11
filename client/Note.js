@@ -16,7 +16,12 @@ Template.Note.events({
   },
   "click .edit": function () {
     Session.set("editing", this._id);
-    console.log("Button edit pressed xoxo");
+  },
+  "click .cancel": function () {
+    Session.set("editing", null);
+  },
+  "click .save": function () {
+    console.log("Trying to save")
   }
 });
 

@@ -2,6 +2,10 @@ TODO - ImpactNote
 =================
 Yes. Ideas. I don't lack those.
 
+* [ ] Add another "/note/:_id/edit" route to an Edit.html
+* [ ] Add "/note/:_id/raw" to a Raw
+* [ ] Add comments
+
 * [x] Refactor the app to put the js/html in different files, in different folders.
   * At the very least put the client and server code in the client and server folders and commit this to git.
   * Make a different file for each view.
@@ -10,7 +14,7 @@ Yes. Ideas. I don't lack those.
 	* Note_view
 	* Note_edit
 * [x] Use Iron:Router to build a multi-page app
-* [ ] Create a set of views
+* [x] Create a set of views
   * [x] An home/create note page
     * [ ] Check for validation on the create note form. As in, a note may have a title but must have some text.
   * [ ] An about page (static)
@@ -33,8 +37,8 @@ Yes. Ideas. I don't lack those.
   * [x] A note may have a title.
   * [x] A note must have some text.
   * [x] A note has a creation_date.
-  * [ ] A note has an owner.
-  * [ ] A note has a modification_date.
+  * [x] A note has an owner.
+  * [x] A note has a modification_date.
   * [ ] A note may have multiple, unique tags.
   * [ ] A note may have a set of versions of itself.
     * As a note is simply a json object with the title, text, creation_date, modification_date, tags field the version may just be represented as a delta of the new object and the old object, tagged with a creation date.
