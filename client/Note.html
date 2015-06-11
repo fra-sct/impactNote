@@ -1,9 +1,15 @@
 <template name="Note">
-  <h2>{{title}}</h2>
-  <div style="float: right;">
-    <button class="delete"><i class="fa fa-trash"></i></button>
-    <button class="edit"><i class="fa fa-edit"></i></button>
+  <div class="row">
+    <h2>{{title}}</h2>
+    <div style="float: right;">
+      <button class="delete"><i class="fa fa-trash"></i></button>
+      <button class="edit"><i class="fa fa-edit"></i></button>
+    </div>
   </div>
-  <pre>{{ text }}</pre>
+  <div class="row">
+    <div class="col-12-sm">
+    {{#markdown}}{{ text }}{{/markdown}}
+    </div>
+  </div>
   {{> contentFor region="Footer" template="DefaultFooter"}}
 </template>
