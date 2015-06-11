@@ -7,8 +7,18 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-12-sm">
-    {{#markdown}}{{ text }}{{/markdown}}
+    <div class="col-9-sm">
+      {{#markdown}}{{ text }}{{/markdown}}
+    </div>
+    <div class="col-3-sm">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Sidebar</h3>
+        </div>
+        <div class="panel-body">
+          Created by
+        </div>
+      </div>
     </div>
   </div>
   {{> contentFor region="Footer" template="DefaultFooter"}}
