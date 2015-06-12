@@ -1,5 +1,9 @@
+Template.Note.created = function () {
+  this.editing = new ReactiveVar(false);
+}
+
 Template.Note.events({
-  "click .delete": function () {
+  "click .delete": function (event, template) {
     // TODO: ask for confirmation on note removal
     Meteor.call('deleteNote', this._id, function (error, result) {
       if (error) {
@@ -14,20 +18,20 @@ Template.Note.events({
       }
     });
   },
-  "click .edit": function () {
-    Session.set("editing", this._id);
+  "click .edit": function (event, template) {
+    template.editing.set(true);
   },
-  "click .cancel": function () {
-    Session.set("editing", null);
+  "click .cancel": function (event, template) {
+    template.editing.set(false);
   },
-  "click .save": function () {
+  "click .save": function (event, template) {
     console.log("Trying to save")
   }
 });
 
 Template.Note.helpers({
   "editing": function () {
-    return Session.get("editing") == this._id;
+    return Template.instance().editing.get();
   }
 })
 
