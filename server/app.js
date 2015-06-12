@@ -42,7 +42,7 @@ Meteor.methods({
     // result holds a WriteResult, of which nRemoved is a field
     return result;
   },
-  'updateNote': function (id, title, text) {
+  'updateNote': function (id, title, text, isPublic) {
     var currentUserId = Meteor.userId();
     var now = moment().format();
     // an anonymous user cannot edit anything
@@ -58,6 +58,7 @@ Meteor.methods({
       $set : {
         title: title,
         text: text,
+        public: isPublic,
         modifiedAt: now
       }
     });
