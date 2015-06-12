@@ -35,12 +35,12 @@ Meteor.methods({
     if (!currentUserId)
       return false;
     // delete the note - but only if the current user is an owner
-    Notes.remove({
+    var result = Notes.remove({
       _id: id,
       user: { $in: [currentUserId] }
     });
-    // I need to return true if the note was actually deleted
-    return true;
+    // result holds a WriteResult, of which nRemoved is a field
+    return result.nRemoved;
   },
   'updateNote': function (id, title, text) {
     var currentUserId = Meteor.userId();
@@ -49,7 +49,7 @@ Meteor.methods({
     if (!currentUserId)
       return false;
     // updates the note
-    Notes.update({
+    var result = Notes.update({
       _id: id,
       user: { $in: [currentUserId] }
     }, {
@@ -59,8 +59,8 @@ Meteor.methods({
         modifiedAt: now
       }
     })
-    // I need to return true if the note was actually updated
-    return true;
+    // as per deleteNote method, but with nModified
+    return result.nModified;
   },
 });
 
