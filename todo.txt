@@ -2,8 +2,10 @@ TODO - ImpactNote
 =================
 Yes. Ideas. I don't lack those.
 
-* [ ] Add another "/note/:_id/edit" route to an Edit.html
-* [ ] Add "/note/:_id/raw" to a Raw
+* [x] Add another "/note/:_id/edit" route to an Edit.html
+  I resorted to using a ReactiveVar to bind the editing state to the template.
+* [x] Add "/note/:_id/raw" to a Raw
+  As per the edit view.
 * [ ] Add comments
 
 * [x] Refactor the app to put the js/html in different files, in different folders.

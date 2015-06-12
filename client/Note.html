@@ -4,7 +4,11 @@
       {{#if editing}}
         {{>note_edit}}
       {{else}}
-        {{#markdown}}{{ text }}{{/markdown}}
+        {{#if raw}}
+          <pre>{{text}}</pre>
+        {{else}}
+          {{#markdown}}{{ text }}{{/markdown}}
+        {{/if}}
       {{/if}}
     </div>
     <div class="col-sm-3">
@@ -22,7 +26,11 @@
           <a href="#" class="list-group-item cancel"><i class="fa fa-times"></i> Cancel</a>
           <a href="#" class="list-group-item delete"><i class="fa fa-trash"></i> Delete</a>
         {{else}}
-          <a href="#" class="list-group-item show_raw"><i class="fa fa-file-o"></i> View raw</a>
+          {{#if raw}}
+          <a href="#" class="list-group-item hide-raw"><i class="fa fa-file-o"></i> View formatted</a>
+          {{else}}
+          <a href="#" class="list-group-item show-raw"><i class="fa fa-file-o"></i> View raw</a>
+          {{/if}}
           {{#if can_edit}}
           <a href="#" class="list-group-item edit"><i class="fa fa-edit"></i> Edit</a>
           <a href="#" class="list-group-item delete"><i class="fa fa-trash"></i> Delete</a>

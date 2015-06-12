@@ -1,5 +1,6 @@
 Template.Note.created = function () {
   this.editing = new ReactiveVar(false);
+  this.raw = new ReactiveVar(false);
 }
 
 Template.Note.events({
@@ -17,6 +18,12 @@ Template.Note.events({
         }
       }
     });
+  },
+  "click .show-raw": function (event, template) {
+    template.raw.set(true);
+  },
+  "click .hide-raw": function (event, template) {
+    template.raw.set(false);
   },
   "click .edit": function (event, template) {
     template.editing.set(true);
@@ -47,6 +54,9 @@ Template.Note.events({
 Template.Note.helpers({
   "editing": function () {
     return Template.instance().editing.get();
+  },
+  "raw": function () {
+    return Template.instance().raw.get();
   },
   "can_edit": function () {
     var currentUserId = Meteor.userId();
