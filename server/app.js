@@ -39,6 +39,7 @@ Meteor.methods({
       _id: id,
       user: { $in: [currentUserId] }
     });
+    // I need to return true if the note was actually deleted
     return true;
   },
   'updateNote': function (id, title, text) {
@@ -58,6 +59,7 @@ Meteor.methods({
         modifiedAt: now
       }
     })
+    // I need to return true if the note was actually updated
     return true;
   },
 });

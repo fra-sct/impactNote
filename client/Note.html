@@ -21,10 +21,10 @@
           <a href="#" class="list-group-item save"><i class="fa fa-save"></i> Save</a>
           <a href="#" class="list-group-item cancel"><i class="fa fa-times"></i> Cancel</a>
         {{else}}
-          <a href="#" class="list-group-item show_raw"><i class="fa fa-file-o delete"></i> View raw</a>
+          <a href="#" class="list-group-item show_raw"><i class="fa fa-file-o"></i> View raw</a>
           <a href="#" class="list-group-item edit"><i class="fa fa-edit"></i> Edit</a>
         {{/if}}
-          <a href="#" class="list-group-item"><i class="fa fa-trash delete"></i> Delete</a>
+          <a href="#" class="list-group-item delete"><i class="fa fa-trash"></i> Delete</a>
         </ul>
       </div>
     </div>
@@ -43,7 +43,5 @@
     <div class="checkbox">
       <label><input type="checkbox" name="public" {{is_public}}>Public</label>
     </div>
-    <button type="button" class="btn btn-default">Cancel</button>
-    <button type="submit" class="btn btn-default">Save</button>
   </form>
 </template>

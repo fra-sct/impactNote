@@ -25,7 +25,24 @@ Template.Note.events({
     template.editing.set(false);
   },
   "click .save": function (event, template) {
-    console.log("Trying to save")
+    var title = $("input[name=title]").val();
+    var text = $("textarea[name=text]").val();
+    var isPublic = $("input[name=public]").prop("checked");
+    console.log("Trying to save");
+    console.log(title, text, isPublic);
+    Meteor.call('updateNote', this._id,
+      title, text, isPublic, function (error, result) {
+      if (error) {
+        console.log(error.reason);
+      } else {
+        if (result) {
+          template.editing.set(false);
+        } else {
+          // TODO: return better feedback to the user
+          console.log("Couldn't update the note.");
+        }
+      }
+    });
   }
 });
 
