@@ -40,14 +40,16 @@ Meteor.methods({
       user: { $in: [currentUserId] }
     });
     // result holds a WriteResult, of which nRemoved is a field
-    return result.nRemoved;
+    return result;
   },
   'updateNote': function (id, title, text) {
     var currentUserId = Meteor.userId();
     var now = moment().format();
     // an anonymous user cannot edit anything
-    if (!currentUserId)
+    if (!currentUserId){
+      console.log("Anon attemped an edit - should be impossible");
       return false;
+    }
     // updates the note
     var result = Notes.update({
       _id: id,
@@ -58,9 +60,9 @@ Meteor.methods({
         text: text,
         modifiedAt: now
       }
-    })
+    });
     // as per deleteNote method, but with nModified
-    return result.nModified;
+    return result;
   },
 });
 

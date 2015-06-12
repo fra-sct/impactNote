@@ -20,11 +20,14 @@
         {{#if editing}}
           <a href="#" class="list-group-item save"><i class="fa fa-save"></i> Save</a>
           <a href="#" class="list-group-item cancel"><i class="fa fa-times"></i> Cancel</a>
+          <a href="#" class="list-group-item delete"><i class="fa fa-trash"></i> Delete</a>
         {{else}}
           <a href="#" class="list-group-item show_raw"><i class="fa fa-file-o"></i> View raw</a>
+          {{#if can_edit}}
           <a href="#" class="list-group-item edit"><i class="fa fa-edit"></i> Edit</a>
-        {{/if}}
           <a href="#" class="list-group-item delete"><i class="fa fa-trash"></i> Delete</a>
+          {{/if}}
+        {{/if}}
         </ul>
       </div>
     </div>

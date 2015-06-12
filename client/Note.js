@@ -28,8 +28,6 @@ Template.Note.events({
     var title = $("input[name=title]").val();
     var text = $("textarea[name=text]").val();
     var isPublic = $("input[name=public]").prop("checked");
-    console.log("Trying to save");
-    console.log(title, text, isPublic);
     Meteor.call('updateNote', this._id,
       title, text, isPublic, function (error, result) {
       if (error) {
@@ -49,6 +47,10 @@ Template.Note.events({
 Template.Note.helpers({
   "editing": function () {
     return Template.instance().editing.get();
+  },
+  "can_edit": function () {
+    var currentUserId = Meteor.userId();
+    return currentUserId && currentUserId == this.user;
   }
 })
 
