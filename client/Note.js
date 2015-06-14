@@ -6,7 +6,7 @@ Template.Note.created = function () {
 Template.Note.events({
   "click .delete": function (event, template) {
     // TODO: ask for confirmation on note removal
-    Meteor.call('deleteNote', this._id, function (error, result) {
+    Meteor.call('deleteNote', this.note._id, function (error, result) {
       if (error) {
         console.log(error.reason);
       } else {
@@ -35,7 +35,7 @@ Template.Note.events({
     var title = $("input[name=title]").val();
     var text = $("textarea[name=text]").val();
     var isPublic = $("input[name=public]").prop("checked");
-    Meteor.call('updateNote', this._id,
+    Meteor.call('updateNote', this.note._id,
       title, text, isPublic, function (error, result) {
       if (error) {
         console.log(error.reason);
@@ -60,7 +60,7 @@ Template.Note.helpers({
   },
   "can_edit": function () {
     var currentUserId = Meteor.userId();
-    return currentUserId && currentUserId == this.creator;
+    return currentUserId && currentUserId == this.note.user;
   }
 })
 

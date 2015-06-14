@@ -27,21 +27,19 @@ Router.route('/note/:_id', function () {
   if(!note) {
     this.render('error_404');
   } else {
-    var user = Meteor.users.findOne({
-      _id: note.user
-    });
+    if (note.user) {
+      var user = Meteor.users.findOne({
+        _id: note.user
+      }).profile;
+    } else {
+      var user = null;
+    }
     // TODO: just pass note: note, and render it in
     // Note.html with a {{#with note}}
     this.render('Note', {
       data: {
-        _id: note._id,
-        title: note.title,
-        text: note.text,
-        createdAt: note.createdAt,
-        modifiedAt: note.modifiedAt,
-        public: note.public,
-        creator: note.user,
-        user: user.profile
+        note: note,
+        user: user
         }
       });
   }

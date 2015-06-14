@@ -1,24 +1,26 @@
 <template name="Note">
   <div class="row">
     <div class="col-sm-9">
-      {{#if editing}}
-        {{>note_edit}}
-      {{else}}
-        {{#if raw}}
-          <pre>{{text}}</pre>
+      {{#with note}}
+        {{#if editing}}
+          {{>note_edit}}
         {{else}}
-          {{#markdown}}{{ text }}{{/markdown}}
+          {{#if raw}}
+            <pre>{{text}}</pre>
+          {{else}}
+            {{#markdown}}{{ text }}{{/markdown}}
+          {{/if}}
         {{/if}}
-      {{/if}}
+      {{/with}}
     </div>
     <div class="col-sm-3">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">{{ title }}</h3>
+          <h3 class="panel-title">{{ note.title }}</h3>
         </div>
         <div class="panel-body">
-          Created by {{#with user}}<a href="/user/{{nickname}}">{{nickname}}</a>{{/with}} on {{ createdAt }}<br/>
-          Modified on {{ modifiedAt }}<br/>
+          Created by {{#if user}}<a href="/user/{{user.nickname}}">{{user.nickname}}</a>{{else}}anonymous{{/if}} on {{ note.createdAt }}<br/>
+          Modified on {{ note.modifiedAt }}<br/>
         </div>
         <ul class="list-group">
         {{#if editing}}
