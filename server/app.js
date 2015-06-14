@@ -10,6 +10,9 @@ Meteor.publish('notesList', function () {
     ]
   });
 });
+Meteor.publish('allUsersData', function () {
+  return users.find( {}, { fields: { 'profile': 1 } } );
+});
 
 Meteor.methods({
   'createNote': function (title, text, isPublic) {

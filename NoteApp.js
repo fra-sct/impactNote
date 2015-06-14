@@ -24,10 +24,26 @@ Router.route('/note/:_id', function () {
   var note = Notes.findOne({
     _id: this.params._id
   });
-  if(!note)
+  if(!note) {
     this.render('error_404');
-  else
+  } else {
     this.render('Note', { data: note });
+  }
 }, {
   name: 'note.show'
+});
+
+// View user
+Router.route('/user/:_id', function () {
+  this.layout("Layout");
+  var user = users.findOne({
+    _id: this.params._id
+  });
+  if (!user) {
+    this.render('error_404');
+  } else {
+    this.render('User', { data: user });
+  }
+}, {
+  name: 'user.show'
 });
