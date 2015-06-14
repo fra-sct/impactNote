@@ -34,10 +34,13 @@ Router.route('/note/:_id', function () {
     // Note.html with a {{#with note}}
     this.render('Note', {
       data: {
+        _id: note._id,
         title: note.title,
         text: note.text,
         createdAt: note.createdAt,
         modifiedAt: note.modifiedAt,
+        public: note.public,
+        creator: note.user,
         user: user.profile
         }
       });

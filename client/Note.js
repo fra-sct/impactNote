@@ -60,7 +60,7 @@ Template.Note.helpers({
   },
   "can_edit": function () {
     var currentUserId = Meteor.userId();
-    return currentUserId && currentUserId == this.user;
+    return currentUserId && currentUserId == this.creator;
   }
 })
 

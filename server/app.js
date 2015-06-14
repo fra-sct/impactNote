@@ -12,7 +12,7 @@ Meteor.publish('notesList', function () {
 });
 Meteor.publish('allUsersData', function () {
   return Meteor.users.find({}, {
-    fields: { 'profile': 1 } 
+    fields: { 'profile': 1 }
   });
 });
 
