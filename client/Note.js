@@ -69,3 +69,19 @@ Template.note_edit.helpers({
     return this.public ? "checked" : "";
   }
 })
+
+Template.comment_new.events({
+  "submit .new-comment": function (event) {
+    var text = event.target.text.value;
+    var id = this.note._id;
+    Meteor.call('createComment', id, text, function (error, result) {
+      if (error) {
+        console.log(error.reason);
+      } else {
+        // do nothing
+      }
+    });
+    event.target.text.value = "";
+    return false;
+  }
+})

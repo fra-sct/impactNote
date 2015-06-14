@@ -27,6 +27,9 @@ Router.route('/note/:_id', function () {
   if(!note) {
     this.render('error_404');
   } else {
+    var comments = note.comments.sort(function (a, b) {
+      return moment(a.createdAt) < moment(b.createdAt);
+    });
     if (note.user) {
       var user = Meteor.users.findOne({
         _id: note.user
@@ -39,7 +42,8 @@ Router.route('/note/:_id', function () {
     this.render('Note', {
       data: {
         note: note,
-        user: user
+        user: user,
+        comments: comments
         }
       });
   }

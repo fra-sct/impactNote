@@ -30,7 +30,8 @@ Meteor.methods({
       createdAt: now,
       modifiedAt: now,
       user: currentUserId,
-      public: isPublic
+      public: isPublic,
+      comments: []
     });
     return noteId;
   },
@@ -68,6 +69,23 @@ Meteor.methods({
       }
     });
     // as per deleteNote method, but with nModified
+    return result;
+  },
+  'createComment': function (noteId, text) {
+    var currentUserId = Meteor.userId();
+    var now = moment().format();
+    var comment = {
+      text: text,
+      createdAt: now,
+      modifiedAt: now,
+      user: currentUserId,
+    };
+    // console.log("createComment", noteId);
+    var result = Notes.update({
+      _id: noteId,
+    }, {
+      $push: { comments: comment }
+    });
     return result;
   },
 });

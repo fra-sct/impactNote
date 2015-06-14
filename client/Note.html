@@ -12,6 +12,21 @@
           {{/if}}
         {{/if}}
       {{/with}}
+      <h2>Comments</h2>
+      {{>comment_new}}
+      {{#if comments}}
+      <ul class="media-list">
+        {{#each comments}}
+        <li class="media">
+          <div class="media-body">
+            {{text}}
+          </div>
+        </li>
+        {{/each}}
+      </ul>
+      {{else}}
+        <p>There are no comments here.</p>
+      {{/if}}
     </div>
     <div class="col-sm-3">
       <div class="panel panel-default">
@@ -56,5 +71,14 @@
     <div class="checkbox">
       <label><input type="checkbox" name="public" {{is_public}}>Public</label>
     </div>
+  </form>
+</template>
+
+<template name="comment_new">
+  <form class="new-comment" role="form">
+    <div class="form-group">
+      <textarea class="form-control" name="text" placeholder="Insert your comment here..." rows="4">{{ text }}</textarea>
+    </div>
+    <button class="button button-normal" type="submit">Submit</button>
   </form>
 </template>
