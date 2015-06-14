@@ -36,7 +36,7 @@ Router.route('/note/:_id', function () {
 // View user
 Router.route('/user/:_id', function () {
   this.layout("Layout");
-  var user = users.findOne({
+  var user = Meteor.users.findOne({
     _id: this.params._id
   });
   if (!user) {
