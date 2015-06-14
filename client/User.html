@@ -1,15 +1,13 @@
 <template name="User">
   <div class="row">
     <div class="col-sm-9">
-      Notes and comments go here.
       {{#each notes}}
-      {{title}} - {{text}} - {{createdAt}}<br/>
+        {{title}} - {{text}} - {{createdAt}}<br/>
       {{/each}}
     </div>
     <div class="col-sm-3">
       <div class="panel panel-default">
         <div class="panel-body">
-          User data goes here.
           {{#with profile}}
             {{ nickname }}
           {{/with}}

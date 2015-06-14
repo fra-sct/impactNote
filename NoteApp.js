@@ -27,23 +27,36 @@ Router.route('/note/:_id', function () {
   if(!note) {
     this.render('error_404');
   } else {
-    this.render('Note', { data: note });
+    var user = Meteor.users.findOne({
+      _id: note.user
+    });
+    // TODO: just pass note: note, and render it in
+    // Note.html with a {{#with note}}
+    this.render('Note', {
+      data: {
+        title: note.title,
+        text: note.text,
+        createdAt: note.createdAt,
+        modifiedAt: note.modifiedAt,
+        user: user.profile
+        }
+      });
   }
 }, {
   name: 'note.show'
 });
 
 // View user
-Router.route('/user/:_id', function () {
+Router.route('/user/:nick', function () {
   this.layout("Layout");
   var user = Meteor.users.findOne({
-    _id: this.params._id
+    'profile.nickname': this.params.nick
   });
   if (!user) {
     this.render('error_404');
   } else {
     var user_notes = Notes.find({
-      user: this.params._id
+      user: user._id
     });
     this.render('User', {
       data: {
