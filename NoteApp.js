@@ -42,7 +42,15 @@ Router.route('/user/:_id', function () {
   if (!user) {
     this.render('error_404');
   } else {
-    this.render('User', { data: user });
+    var user_notes = Notes.find({
+      user: this.params._id
+    });
+    this.render('User', {
+      data: {
+        profile: user.profile,
+        notes: user_notes
+        }
+    });
   }
 }, {
   name: 'user.show'

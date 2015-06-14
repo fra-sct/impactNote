@@ -11,7 +11,9 @@ Meteor.publish('notesList', function () {
   });
 });
 Meteor.publish('allUsersData', function () {
-  return Meteor.users.find( {}, { fields: { 'profile': 1 } } );
+  return Meteor.users.find({}, {
+    fields: { 'profile': 1 } 
+  });
 });
 
 Meteor.methods({
