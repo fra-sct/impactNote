@@ -74,11 +74,15 @@ Meteor.methods({
   'createComment': function (noteId, text) {
     var currentUserId = Meteor.userId();
     var now = moment().format();
+    var commentId = new Mongo.Collection.ObjectID()._str;
+    var nickname = Meteor.user().findOne({ _id: currentUserId }).profile.nickname;
     var comment = {
+      _id: commentId,
       text: text,
       createdAt: now,
       modifiedAt: now,
       user: currentUserId,
+      nickname: nickname
     };
     // console.log("createComment", noteId);
     var result = Notes.update({
