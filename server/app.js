@@ -76,6 +76,7 @@ Meteor.methods({
     var now = moment().format();
     var commentId = new Mongo.Collection.ObjectID()._str;
     var nickname = Meteor.users.findOne({ _id: currentUserId }).profile.nickname;
+    // TODO: can anons comment? I think this code will not work in that case.
     var comment = {
       _id: commentId,
       text: text,
@@ -92,6 +93,21 @@ Meteor.methods({
     });
     return result;
   },
+  'updateComment': function (noteId, commentId, text) {
+    var currentUserId = Meteor.userId();
+    var now = moment().format();
+    var result = Notes.update({
+      _id: noteId,
+      "comments._id": noteId,
+      "comments.user": currentUserId
+    }, {
+      $set: {
+        "comments.$.text": text,
+        "comments.$.modifiedAt": now
+      }
+    });
+    return result;
+  }
 });
 
 Meteor.startup(function () {
